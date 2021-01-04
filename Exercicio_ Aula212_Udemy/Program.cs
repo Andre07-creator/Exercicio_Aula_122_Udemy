@@ -1,35 +1,45 @@
 ﻿using System;
-using Exercicio__Aula212_Udemy.Entites;
 using System.Collections.Generic;
 
-namespace Exercicio__Aula212_Udemy
+namespace Course
 {
     class Program
     {
         static void Main(string[] args)
         {
-            PortalOnline portal = new PortalOnline();
+
+            HashSet<int> courseA = new HashSet<int>();
+            HashSet<int> courseB = new HashSet<int>();
+            HashSet<int> courseC = new HashSet<int>();
+
             Console.Write("How many students for course A? ");
-            int na = int.Parse(Console.ReadLine());
-            for(int i = 0; i < na; i++)
+            int n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
             {
-              portal.AddA (int.Parse(Console.ReadLine()));
+                int cod = int.Parse(Console.ReadLine());
+                courseA.Add(cod);
             }
+
             Console.Write("How many students for course B? ");
-            int nb = int.Parse(Console.ReadLine());
-            for (int i = 0; i < nb; i++)
+            n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
             {
-                portal.AddB(int.Parse(Console.ReadLine()));
+                int cod = int.Parse(Console.ReadLine());
+                courseB.Add(cod);
             }
+
             Console.Write("How many students for course C? ");
-            int nc = int.Parse(Console.ReadLine());
-            for (int i = 0; i < nc; i++)
+            n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
             {
-                portal.AddC(int.Parse(Console.ReadLine()));
+                int cod = int.Parse(Console.ReadLine());
+                courseC.Add(cod);
             }
 
-            Console.WriteLine(portal);
+            HashSet<int> all = new HashSet<int>(courseA);
+            all.UnionWith(courseB);
+            all.UnionWith(courseC);
+            Console.WriteLine("Total students: " + all.Count);
         }
-
     }
 }
